@@ -29,7 +29,7 @@ def paynow():
     print(
         yaml.dump(
             func(
-                phone=args.recipient,
+                recipient=args.recipient,
                 amount=args.amount,
                 comment=args.comment,
                 ttl=args.time_to_live,
