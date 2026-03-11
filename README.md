@@ -127,7 +127,8 @@ pip3 install nlannuzel.sgqr
 ```
 
 ## Package usage
-### With the built-in script:
+### With the built-in scripts:
+
 ```shell
 # Encoding
 encode-sgqr < description.yaml
@@ -136,6 +137,22 @@ encode-sgqr < description.yaml
 # Encoding, and displaying a QR code in the terminal
 # with https://pypi.org/project/qrcode/:
 encode-sgqr < description.yaml | qr
+```
+
+The `paynow` script takes a phone number, a transaction amount, and
+generates a EMV code:
+
+```shell
+paynow --help
+paynow -r +6599999999 -a 8.88
+paynow -r +6599999999 -a 8.88 | qr
+```
+
+Optionally, the command accepts a time-to-live (validity period in
+seconds) and a comment that will appear on the recipient bank account
+statement:
+```shell
+paynow -r +6599999999 -a 1 -c 'test paynow' -t 300 | qr
 ```
 
 For decoding an existing QR code image, the text string must first be
