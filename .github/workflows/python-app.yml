@@ -26,7 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest pyyaml
+        pip install flake8 pytest pyyaml build setuptools
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
@@ -37,3 +37,15 @@ jobs:
     - name: Test with pytest
       run: |
         PYTHONPATH=./src pytest
+    - name: Build wheel
+      run: python -m build
+    - name: Install wheel
+      run: pip install $(ls -tr dist/*.whl | tail -1)
+    - name: test wheel paynow phone
+      run: paynow -a 88 -r +6599999999 -c 'split bill restaurant'
+    - name: test wheel paynow UEN
+      run: paynow -a 88 -r 12345678 -c 12345 -u
+    - name: test wheel paynow UEN encode
+      run: paynow -a 88 -r 12345678 -c 12345 -u | encode-sgqr
+    - name: test wheel paynow UEN encode decode
+      run: paynow -a 88 -r 12345678 -c 12345 -u -t 300 | encode-sgqr | decode-sgqr
