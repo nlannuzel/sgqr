@@ -29,13 +29,3 @@ class DeTokenizer():
         if l > 99:
             raise(ValueError('len(value) must be < 100'))
         self._s += i + "{:02d}".format(l) + v
-
-    @staticmethod
-    def entries_to_string(entries, allow_empty = True):
-        detok = DeTokenizer(allow_empty)
-        for ent in entries:
-            if level != 0 or ent['id'] != CRC_ID:
-                v = ent['value'] if type(ent['value']) is str else DeTokenizer.to_string(ent['value'], allow_empty, 1 + level)
-                detok.put_tokens(ent['id'], v)
-        
-            return detok.s
