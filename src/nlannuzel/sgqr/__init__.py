@@ -3,6 +3,7 @@ import argparse
 from nlannuzel.sgqr.encode import encode_sgqr
 from nlannuzel.sgqr.decode import decode_sgqr
 from datetime import datetime, timezone, timedelta
+from nlannuzel.sgqr.factory import paynow_phone
 
 def encode():
     with open("/dev/stdin") as f:
@@ -23,36 +24,12 @@ def paynow():
     parser.add_argument('-e', '--editable_amount', required=False, action='store_true', help='allow the amount to be edited')
     args = parser.parse_args()
 
-    def d(i, v):
-        return {'id': i, 'value': v}
-    def a2d(a):
-        return [ d(i, v) for i, v in a ]
-
-    decoded = a2d([
-        ['00', '01'],
-        ['01', '12'],
-        ['26', a2d([
-            ['00', 'SG.PAYNOW'],
-            ['01', '0'],
-            ['02', args.recipient],
-            ['03', '0' if args.editable_amount is None else '1'],
-        ])],
-        ['52', '3000'],
-        ['53', '702'],
-        ['54', str(args.amount)],
-        ['58', 'SG'],
-        ['60', 'Singapore'],
-    ])
-
-    if args.time_to_live is not None:
-        tz_sg = timezone(offset=timedelta(hours=8))
-        dt = datetime.now(tz_sg) + timedelta(seconds=args.time_to_live)
-        expiry = dt.strftime('%Y%m%d%H%M%S')
-        decoded[2]['value'].append(d('04', expiry))
-
-    if args.comment is not None:
-        decoded.append(d('62', a2d([['01', args.comment]])))
-    print(encode_sgqr(decoded), end='')
-
-if __name__ == '__main__':
-    paynow()
+    print(
+        yaml.dump(
+            paynow_phone(
+                phone=args.recipient,
+                amount=args.amount,
+                comment=args.comment,
+                ttl=args.time_to_live,
+                editable_amount=args.editable_amount,
+            )))

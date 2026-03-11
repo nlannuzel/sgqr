@@ -145,14 +145,14 @@ generates a EMV code:
 ```shell
 paynow --help
 paynow -r +6599999999 -a 8.88
-paynow -r +6599999999 -a 8.88 | qr
+paynow -r +6599999999 -a 8.88 | encode-sgqr
 ```
 
 Optionally, the command accepts a time-to-live (validity period in
 seconds) and a comment that will appear on the recipient bank account
 statement:
 ```shell
-paynow -r +6599999999 -a 1 -c 'test paynow' -t 300 | qr
+paynow -r +6599999999 -a 1 -c 'test paynow' -t 300 | encode-sgqr | qr
 ```
 
 For decoding an existing QR code image, the text string must first be
