@@ -1,0 +1,24 @@
+-
+  - Language Preference
+  - "00"
+  - ans
+  - 2
+  - M
+-
+  - Merchant Name Alternate Language
+  - "01"
+  - S
+  - 1-25
+  - M
+-
+  - Merchant City Alternate Language
+  - "02"
+  - ans
+  - 1-15
+  - O
+-
+  - Reserved For Futur Use
+  - 03-99
+  - S
+  - 1-25
+  - O

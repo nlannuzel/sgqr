@@ -1,0 +1,133 @@
+-
+  - Name
+  - ID
+  - Format
+  - Length
+  - Presence
+  - Comment
+-
+  - Payload Format Indicator
+  - "00"
+  - N
+  - "02"
+  - M
+  - ""
+-
+  - Point of Initiation Method
+  - "01"
+  - N
+  - "02"
+  - O
+  - ""
+-
+  - Merchant Account Information
+  - "02-51"
+  - ans
+  - "1-99"
+  - M
+  - At least one Merchant Account Information data object shall be present.
+-
+  - Merchant Category Code
+  - "52"
+  - N
+  - "04"
+  - M
+  - ""
+-
+  - Transaction Currency
+  - "53"
+  - N
+  - "03"
+  - M
+  - ""
+-
+  - Transaction Amount
+  - "54"
+  - ans
+  - 1-13
+  - C
+  - Absent if the mobile application is to prompt the consumer to enter the transaction amount. Present otherwise.
+-
+  - Tip or Convenience Indicator
+  - "55"
+  - N
+  - "02"
+  - O
+  - ""
+-
+  - Value of Convenience Fee Fixed
+  - "56"
+  - ans
+  - 1-13
+  - C
+  - Presence of these data objects depends on the presence and value of the Tip or Convenience Indicator.
+-
+  - Value of Convenience Fee Percentage
+  - "57"
+  - ans
+  - 1-05
+  - C
+  - Presence of these data objects depends on the presence and value of the Tip or Convenience Indicator.
+-
+  - Country Code
+  - "58"
+  - ans
+  - "02"
+  - M
+  - ""
+-
+  - Merchant Name
+  - "59"
+  - ans
+  - 1-25
+  - M
+  - ""
+-
+  - Merchant City
+  - "60"
+  - ans
+  - 1-15
+  - M
+  - ""
+-
+  - Postal Code
+  - "61"
+  - ans
+  - 1-10
+  - O
+  - ""
+-
+  - Additional Data Field Template
+  - "62"
+  - S
+  - 1-99
+  - O
+  - The Additional Data Field Template includes information that may be provided by the Merchant or may be populated by the mobile application to enable or facilitate certain use cases. For the list of data objects that can be included in this template, please refer to Table 3.7.
+-
+  - Merchant Information—Language Template
+  - "64"
+  - S
+  - 1-99
+  - O
+  - The Merchant Information—Language Template includes merchant information in an alternate language and may use a character set different from the Common Character Set. It provides an alternative to the merchant information under the root. For the list of data objects that can be included in this template, please refer to Table 3.8.
+-
+  - RFU for EMVCo
+  - "65-79"
+  - S
+  - Each 1-99
+  - O
+  - Data objects reserved for EMVCo
+-
+  - Unreserved Templates
+  - "80-99"
+  - S
+  - Each 1-99
+  - O
+  - Unreserved Templates
+-
+  - CRC
+  - "63"
+  - ans
+  - "04"
+  - M
+  - ""

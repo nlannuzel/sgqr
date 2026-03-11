@@ -1,0 +1,78 @@
+-
+  - Bill Number
+  - "01"
+  - ans
+  - 1-25
+  - O
+-
+  - Mobile Number
+  - "02"
+  - ans
+  - 1-25
+  - O
+-
+  - Store Label
+  - "03"
+  - ans
+  - 1-25
+  - O
+-
+  - Loyalty Number
+  - "04"
+  - ans
+  - 1-25
+  - O
+-
+  - Reference Label
+  - "05"
+  - ans
+  - 1-25
+  - O
+-
+  - Customer Label
+  - "06"
+  - ans
+  - 1-25
+  - O
+-
+  - Terminal Label
+  - "07"
+  - ans
+  - 1-25
+  - O
+-
+  - Purpose of Transaction
+  - "08"
+  - ans
+  - 1-25
+  - O
+-
+  - Additional Consumer Data Request
+  - "09"
+  - ans
+  - 1-03
+  - O
+-
+  - Merchant Tax ID
+  - "10"
+  - ans
+  - 1-20
+  - O
+-
+  - Merchant Channel
+  - "11"
+  - ans
+  - "03"
+  - O
+-
+  - RFU for EMVCo
+  - "12-49"
+  - S
+  - var.
+  - O
+-
+  - Payment System specific templates
+  - "50-99"
+  - S
+  - var.
+  - O

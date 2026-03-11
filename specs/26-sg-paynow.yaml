@@ -1,0 +1,36 @@
+-
+  - UID
+  - "00"
+  - N
+  - 2
+  - M
+-
+  - Proxy Type
+  - "01"
+  - N
+  - 1
+  - M
+-
+  - payee
+  - "02"
+  - ans
+  - 1-25
+  - M
+-
+  - Editable Transaction amount indicator
+  - "03"
+  - N
+  - 1-25
+  - O
+-
+  - Expiry Timestamp
+  - "04"
+  - ans
+  - 1-25
+  - O
+-
+  - Transaction Reference
+  - "05"
+  - ans
+  - 1-25
+  - O

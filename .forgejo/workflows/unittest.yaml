@@ -1,0 +1,24 @@
+on:
+  release:
+    types:
+    - published
+  pull_request:
+    types:
+    - opened
+    - synchronize
+    - reopened
+env:
+  VENV_DIR: /tmp/venv
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - id: create-venv
+        run: >
+          rm -rf ${{ env.VENV_DIR }};
+          python -m venv $${{ env.VENV_DIR }};
+          $${{ env.VENV_DIR }}/bin/pip install setuptools build pyyaml;
+      - id: unittest
+        run: >-
+          PYTHONPATH=./src ${{ env.ENV_DIR }}/bin/python3 -m unittest discover ./tests

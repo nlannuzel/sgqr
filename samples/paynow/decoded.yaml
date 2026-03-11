@@ -1,0 +1,48 @@
+- id: '00'
+  name: Payload Format Indicator
+  value: '01'
+- id: '01'
+  name: Point of Initiation Method
+  value: '12'
+- id: '26'
+  name: Merchant Account Information
+  value:
+  - id: '00'
+    value: SG.PAYNOW
+    name: UID
+  - id: '01'
+    value: '0'
+    name: Proxy Type
+  - id: '02'
+    value: '+6599999999'
+    name: payee
+  - id: '03'
+    value: '1'
+    name: Editable Transaction amount indicator
+  - id: '04'
+    value: '20260201230310'
+    name: Expiry Timestamp
+- id: '52'
+  name: Merchant Category Code
+  value: '3000'
+- id: '53'
+  name: Transaction Currency
+  value: '702'
+- id: '54'
+  name: Transaction Amount
+  value: '12.34'
+- id: '58'
+  name: Country Code
+  value: SG
+- id: '60'
+  name: Merchant City
+  value: Singapore
+- id: '62'
+  name: Additional Data Field Template
+  value:
+  - id: '01'
+    name: Bill Number
+    value: comment
+- id: '63'
+  name: CRC
+  value: '2259'

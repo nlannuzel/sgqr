@@ -1,0 +1,12 @@
+-
+  - Global Unique identifier
+  - "00"
+  - ans
+  - 1-32
+  - M
+-
+  - Context Specific Data
+  - "01-99"
+  - S
+  - 1-99
+  - M

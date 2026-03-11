@@ -1,0 +1,44 @@
+license-expression = "GPL-3.0-only"
+license-files = ["LICENSE"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project]
+name = "nlannuzel.sgqr"
+version = "0.0.1"
+authors = [
+  { name = "Nicolas Lannuzel", email = "nlannuzel@gmail.com" },
+]
+description = "Reads and produces SGQR codes"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale"
+]
+keywords = [
+    "emv",
+    "emvco",
+    "qrcode",
+    "payment",
+    "singapore",
+    "paynow",
+]
+dependencies = [
+    "pyyaml",
+]
+
+[project.scripts]
+encode-sgqr = "nlannuzel.sgqr:encode"
+decode-sgqr = "nlannuzel.sgqr:decode"
+paynow = "nlannuzel.sgqr:paynow"
+[project.urls]
+Homepage = "https://github.com/nlannuzel/sgqr"
