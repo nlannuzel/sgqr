@@ -25,7 +25,7 @@ def paynow():
     parser.add_argument('-e', '--editable_amount', required=False, action='store_true', help='allow the amount to be edited')
     args = parser.parse_args()
 
-    func = pay_uen if args.uen else pay_phone
+    func = paynow_uen if args.uen else paynow_phone
     print(
         yaml.dump(
             func(
