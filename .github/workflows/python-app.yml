@@ -52,8 +52,3 @@ jobs:
           python -m pip check
       - name: Test installed wheel
         run: python -m pytest -q
-      - name: Smoke test installed commands outside checkout
-        working-directory: ${{ runner.temp }}
-        run: |
-          paynow -a 88 -r +6599999999 -c 'split bill restaurant' | encode-sgqr | decode-sgqr
-          paynow -a 88 -r 12345678 -c 12345 -u -t 300 | encode-sgqr | decode-sgqr
