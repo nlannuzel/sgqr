@@ -1,5 +1,3 @@
-import os
-import yaml
 import unittest
 from nlannuzel.sgqr.encode import encode_sgqr
 from nlannuzel.sgqr.decode import decode_sgqr

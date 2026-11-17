@@ -2,7 +2,6 @@ import yaml
 import argparse
 from nlannuzel.sgqr.encode import encode_sgqr
 from nlannuzel.sgqr.decode import decode_sgqr
-from datetime import datetime, timezone, timedelta
 from nlannuzel.sgqr.factory import paynow_phone, paynow_uen
 
 def encode():

@@ -1,6 +1,4 @@
-import yaml
 from datetime import datetime, timezone, timedelta
-from nlannuzel.sgqr.templates import parse_str
 
 def d(i, v):
     return {'id': i, 'value': v}

@@ -79,7 +79,7 @@ def get_template(parent: Template, entry_id: str, entry_value: str) -> Template:
     if '65' <= entry_id <= '79':
         return Template.RESERVED_FOR_FUTURE_USE
     if '80' <= entry_id <= '99':
-        uid = get_uid(entry_value)
+        get_uid(entry_value)
         return Template.UNRESERVED
     return None
 
