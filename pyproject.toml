@@ -1,14 +1,16 @@
-license-expression = "GPL-3.0-only"
-license-files = ["LICENSE"]
-
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"nlannuzel.sgqr" = ["specs/*.yaml"]
+
 [project]
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
 name = "nlannuzel.sgqr"
 version = "0.0.1"
 authors = [
@@ -21,7 +23,6 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
     "Development Status :: 4 - Beta",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Topic :: Office/Business :: Financial :: Point-Of-Sale"
 ]
 keywords = [

@@ -1,5 +1,8 @@
 from yaml import load, Loader
 from enum import Enum, auto
+from importlib.resources import files
+from importlib.resources.abc import Traversable
+from pathlib import Path
 from nlannuzel.sgqr.tokenizer import Tokenizer
 
 class Template(Enum):
@@ -11,7 +14,7 @@ class Template(Enum):
     UNRESERVED = auto(),
 
 class SpecTable():
-    def __init__(self, template: Template, specs_dir: str='specs'):
+    def __init__(self, template: Template, specs_dir: str | None = None):
         spec_files = {
             Template.ROOT: 'root-data.yaml',
             Template.ADDITIONAL_DATA_FIELDS: '62-additional-data-fields-template.yaml',
@@ -20,11 +23,12 @@ class SpecTable():
             Template.MERCHANT_ACCOUNT_INFORMATION_PAYNOW: '26-sg-paynow.yaml',
         }
         self._template = template
-        self._spec_file = specs_dir + '/' + spec_files[template] if template in spec_files else None
+        spec_root = files(__package__).joinpath('specs') if specs_dir is None else Path(specs_dir)
+        self._spec_file = spec_root.joinpath(spec_files[template]) if template in spec_files else None
         self._table = None
 
     @property
-    def spec_file(self) -> str:
+    def spec_file(self) -> Traversable | None:
         return self._spec_file
 
     @property
@@ -36,7 +40,7 @@ class SpecTable():
         if self.spec_file is None:
             raise NoSpecfileError(self.template)
         if self._table is None:
-            with open(self.spec_file) as f:
+            with self.spec_file.open('r', encoding='utf-8') as f:
                 self._table = load(f, Loader=Loader)
         return self._table
 
