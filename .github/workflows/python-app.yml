@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -52,3 +54,31 @@ jobs:
           python -m pip check
       - name: Test installed wheel
         run: python -m pytest -q
+
+  publish:
+    name: Publish wheel to PyPI
+    if: github.event_name == 'release' && github.event.action == 'published'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - name: Install publishing tools
+        run: python -m pip install 'build>=1.2,<2' 'twine>=6,<8'
+      - name: Build wheel
+        run: python -m build --wheel
+      - name: Validate wheel
+        run: python -m twine check --strict dist/*.whl
+      - name: Upload wheel to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          # Configure this repository secret with a PyPI API token.
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: python -m twine upload --non-interactive dist/*.whl
