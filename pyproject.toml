@@ -8,6 +8,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"nlannuzel.sgqr" = ["specs/*.yaml"]
+
 [project]
 name = "nlannuzel.sgqr"
 version = "0.0.1"
