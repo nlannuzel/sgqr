@@ -15,8 +15,8 @@ def decode():
 
 def paynow():
     parser = argparse.ArgumentParser(
-                    prog='paynow-sgqr',
-                    description='encode a EMV string for PayNow')
+                    prog='paynow',
+                    description='generate a YAML payment description for PayNow')
     parser.add_argument('-r', '--recipient', required=True, help="payee's phone number or UEN")
     parser.add_argument('-u', '--uen', required=False, action='store_true', help="pay to a UEN instead of a phone")
     parser.add_argument('-a', '--amount', required=True, type=float, help='amount in SGD')

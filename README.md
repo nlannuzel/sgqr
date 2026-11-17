@@ -139,8 +139,9 @@ encode-sgqr < description.yaml
 encode-sgqr < description.yaml | qr
 ```
 
-The `paynow` script takes a phone number, a transaction amount, and
-generates a EMV code:
+The `paynow` script takes a phone number and a transaction amount, and
+generates a YAML payment description. Pipe it through `encode-sgqr` to
+generate an EMV string:
 
 ```shell
 paynow --help
